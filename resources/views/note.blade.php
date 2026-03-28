@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-3xl font-bold mb-6">My Notes</h1>
-    <livewire:notes />
+    <div class="h-[calc(100vh-2rem)]">
+        <livewire:notes.notes-panel />
+    </div>
 @endsection
