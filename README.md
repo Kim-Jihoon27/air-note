@@ -1,166 +1,37 @@
+<h1 align="center">
+  <span style="color:#00ff9f">Air Note</span>
+</h1>
 <p align="center">
-  <a href="https://laravel.com" target="_blank">
-    <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
-  </a>
+  <span style="color:#ff4da6">A simple, fast, and secure cloud-based note application.</span>
 </p>
 
+---
+
+## <span style="color:#00e5ff">Overview</span>  
+<span style="color:#dcdcdc">
+Air Note is a cloud-powered note-taking app built for speed, accessibility, and simplicity.  
+Capture ideas, organize tasks, and store important information — all synced seamlessly across devices.
+</span>
+
+---
+
+## <span style="color:#00ff9f">Key Features</span>  
+- <span style="color:#00e5ff"><b>Cloud Sync</b></span> — Notes available anytime, anywhere  
+- <span style="color:#ff4da6"><b>Secure Storage</b></span> — Encrypted and protected data  
+- <span style="color:#00ff9f"><b>Rich Editing</b></span> — Create and format notes with ease  
+- <span style="color:#00e5ff"><b>Responsive Design</b></span> — Optimized for desktop, tablet, and mobile  
+- <span style="color:#ff4da6"><b>Search & Organize</b></span> — Categorize and quickly find notes  
+
+---
+
+## <span style="color:#ff9933">Theme</span>  
+Air Note embraces a <span style="color:#00e5ff"><b>modern and aesthethic approach</b></span> with RGB-inspired visuals:  
+- <span style="color:#00ff9f">Dark backgrounds</span> for focus  
+- <span style="color:#ff4da6">Neon highlights</span> (green, cyan, magenta, pink) for clarity  
+- <span style="color:#00e5ff">Minimalist layout</span> with sharp contrasts  
+
+---
+
 <p align="center">
-  <a href="https://github.com/system-intelligence/Jirrum_Laravel_Starter"><img src="https://img.shields.io/badge/version-1.0.0-blue.svg" alt="Version"></a>
-  <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  Created by: <span style="color:#00ff9f"><b>Kim Jihoon</b></span>
 </p>
-
-# Jirrum Laravel Starter
-
-A ready-to-use Laravel starter pack for rapid application development. This package provides a clean foundation with essential configurations to kickstart your Laravel projects.
-
----
-
-## 📋 Prerequisites
-
-Before you begin, ensure you have the following installed:
-
-- **PHP** >= 8.2
-- **Composer** (latest version)
-- **Node.js** >= 18.x & **NPM**
-- **Git**
-- A database server (MySQL, PostgreSQL, or SQLite)
-
----
-
-## 🚀 Installation
-
-Follow these steps to clone and set up the starter pack:
-
-### Step 1: Clone the Repository
-
-```bash
-git clone https://github.com/system-intelligence/Jirrum_Laravel_Starter.git
-```
-
-### Step 2: Navigate to the Project Directory
-
-```bash
-cd Jirrum_Laravel_Starter
-```
-
-### Step 3: Install PHP Dependencies
-
-```bash
-composer install
-```
-
-### Step 4: Install JavaScript Dependencies
-
-```bash
-npm install
-```
-
-### Step 5: Configure Environment
-
-Copy the example environment file and configure your settings:
-
-```bash
-cp .env.example .env
-```
-
-Then update the `.env` file with your database credentials and other settings:
-
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=jirrum_laravel
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-### Step 6: Generate Application Key
-
-```bash
-php artisan key:generate
-```
-
-### Step 7: Run Database Migrations
-
-```bash
-php artisan migrate
-```
-
-### Step 8: Build Frontend Assets
-
-**For development (with hot reload):**
-
-```bash
-npm run dev
-```
-
-**For production build:**
-
-```bash
-npm run build
-```
-
----
-
-## ▶️ Running the Application
-
-### Start the Development Server
-
-Open a new terminal window and run:
-
-```bash
-php artisan serve
-```
-
-Your application will be available at: **http://localhost:8000**
-
----
-
-## 📁 Project Structure
-
-```
-Jirrum_Laravel_Starter/
-├── app/              # Application core code
-├── bootstrap/        # Framework bootstrapping
-├── config/           # Configuration files
-├── database/         # Migrations, seeders, factories
-├── public/           # Entry point & public assets
-├── resources/        # Views, CSS, JS, raw assets
-├── routes/           # Route definitions
-├── tests/            # Test files
-└── ...
-```
-
----
-
-## 🛠️ Useful Commands
-
-| Command | Description |
-|---------|-------------|
-| `php artisan serve` | Start the development server |
-| `npm run dev` | Compile assets with Vite (watch mode) |
-| `npm run build` | Build assets for production |
-| `php artisan migrate` | Run database migrations |
-| `php artisan migrate:fresh --seed` | Fresh migrate with seeders |
-| `php artisan key:generate` | Generate a new app key |
-| `php artisan test` | Run the test suite |
-
----
-
-## 📄 License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
----
-
-## 🔗 Links
-
-- [Laravel Documentation](https://laravel.com/docs)
-- [Laracasts](https://laracasts.com)
-- [Laravel News](https://laravel.com/news)
