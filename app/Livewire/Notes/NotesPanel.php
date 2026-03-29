@@ -10,7 +10,6 @@ class NotesPanel extends Component
 
     protected $listeners = [
         'note-selected' => 'onNoteSelected',
-        'note-saved' => '$refresh',
     ];
 
     public function onNoteSelected(int $noteId): void

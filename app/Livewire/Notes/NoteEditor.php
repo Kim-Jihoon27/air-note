@@ -2,51 +2,51 @@
 
 namespace App\Livewire\Notes;
 
-use Livewire\Component;
 use App\Models\Note;
+use Livewire\Component;
+use Livewire\Attributes\On;
+use Livewire\Attributes\Locked;
+use Livewire\Attributes\Validate;
 
 class NoteEditor extends Component
 {
+    #[Locked]
     public ?int $noteId = null;
-    public string $title = '';
-    public string $content = '';
-    public bool $isDirty = false;
-    public ?int $debounceTimeout = 500; // Auto-save delay
 
-    protected $listeners = [
-        'note-selected' => 'loadNote',
-        'refresh-editor' => '$refresh',
-    ];
+    #[Validate('nullable|string|max:255')]
+    public ?string $title = null;
 
-    public function loadNote(int $noteId): void
+    #[Validate('nullable|string')]
+    public ?string $content = null;
+
+    public bool $showSaveToast = false;
+    public ?string $lastSavedAt = null;
+    public bool $isSaving = false;
+
+    public function mount(): void
     {
-        $this->saveIfDirty(); // Auto-save before switching
-        
-        $note = Note::find($noteId);
-        
-        if ($note) {
-            $this->noteId = $note->id;
-            $this->title = $note->title ?? '';
-            $this->content = $note->content ?? '';
-            $this->isDirty = false;
+        if ($this->noteId) {
+            $this->loadNote();
         }
     }
 
-    public function updatedTitle(): void
+    #[On('note-selected')]
+    public function selectNote(int $noteId): void
     {
-        $this->isDirty = true;
-        $this->scheduleAutoSave();
+        $this->saveIfDirty();
+        $this->noteId = $noteId;
+        $this->loadNote();
     }
 
-    public function updatedContent(): void
+    public function loadNote(): void
     {
-        $this->isDirty = true;
-        $this->scheduleAutoSave();
-    }
+        $note = Note::find($this->noteId);
 
-    protected function scheduleAutoSave(): void
-    {
-        // Livewire v3 debounce approach
+        if ($note) {
+            $this->title = $note->title;
+            $this->content = $note->content;
+            $this->lastSavedAt = $note->updated_at?->diffForHumans();
+        }
     }
 
     public function saveNote(): void
@@ -55,23 +55,39 @@ class NoteEditor extends Component
             return;
         }
 
-        $this->validate([
-            'title' => 'nullable|string|max:255',
-            'content' => 'nullable|string',
-        ]);
+        $this->isSaving = true;
+        $this->validate();
 
-        Note::find($this->noteId)->update([
+        Note::where('id', $this->noteId)->update([
             'title' => $this->title ?: substr(strip_tags($this->content), 0, 50),
             'content' => $this->content,
+            'updated_at' => now(),
         ]);
 
-        $this->isDirty = false;
-        $this->dispatch('note-saved');
+        $this->lastSavedAt = now()->diffForHumans();
+        $this->showSaveToast = true;
+        $this->isSaving = false;
+
+        $this->dispatch('note-updated', noteId: $this->noteId);
+    }
+
+    public function updating($name, $value): void
+    {
+        if (in_array($name, ['title', 'content'])) {
+            $this->showSaveToast = false;
+        }
+    }
+
+    public function updated($name, $value): void
+    {
+        if (in_array($name, ['title', 'content'])) {
+            $this->saveNote();
+        }
     }
 
     protected function saveIfDirty(): void
     {
-        if ($this->isDirty && $this->noteId) {
+        if ($this->noteId && ($this->title || $this->content)) {
             $this->saveNote();
         }
     }

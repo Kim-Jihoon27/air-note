@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Air Note</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Air Note - Notes App</title>
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @livewireStyles
 </head>
-<body class="bg-gray-100 text-gray-900">
-    <div class="container mx-auto p-6">
+<body class="bg-gray-100">
+    <div class="h-screen">
         @yield('content')
     </div>
+
     @livewireScripts
 </body>
 </html>
