@@ -33,5 +33,5 @@ Air Note embraces a <span style="color:#00e5ff"><b>modern and aesthethic approac
 ---
 
 <p align="center">
-  Created by: <span style="color:#00ff9f"><b>Kim Jihoon 2026</b></span>
+  Created by: <span style="color:#00ff9f"><b>Kim Jihoon 2026 0000</b></span>
 </p>
